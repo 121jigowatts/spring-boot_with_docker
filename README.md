@@ -47,3 +47,26 @@ $ docker stop springboot-app
 ```
 $ docker start springboot-app
 ```
+
+***
+いったん動いた状態でメモ
+
+そのままだとDB接続エラーになるので、テストはスキップしてビルドしておく。
+```
+$ ./gradlew build -x test
+```
+
+Dockerイメージは作り直し。
+```
+$ docker build -t springboot-docker:0.0.1-SNAPSHOT ./ --build-arg JAR_FILE=./build/libs/spring-boot_with_docker-0.0.1-SNAPSHOT.jar
+```
+
+この状態まできたら次を実行。
+```
+$ docker-compose up
+```
+
+止める時は次。
+```
+$ docker-compose stop
+```

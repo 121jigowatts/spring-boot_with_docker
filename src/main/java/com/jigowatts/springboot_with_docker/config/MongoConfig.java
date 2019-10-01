@@ -15,7 +15,9 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        ServerAddress addr = new ServerAddress("localhost", 27017);
+        // localhostではDockerで接続できないため定義を変更
+        // TODO:定義を管理する
+        ServerAddress addr = new ServerAddress("mongodb", 27017);
         return new MongoClient(addr);
     }
 }
