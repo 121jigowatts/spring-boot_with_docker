@@ -1,0 +1,14 @@
+package com.jigowatts.springboot_with_docker.repositories;
+
+import java.util.List;
+
+import com.jigowatts.springboot_with_docker.domain.Customer;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface CustomerRepository extends MongoRepository<Customer, String> {
+
+    public Customer findByFirstName(String firstName);
+    public List<Customer> findByLastName(String lastName);
+
+}
