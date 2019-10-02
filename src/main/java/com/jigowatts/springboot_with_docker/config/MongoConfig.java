@@ -3,21 +3,29 @@ package com.jigowatts.springboot_with_docker.config;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 @Configuration
 public class MongoConfig extends AbstractMongoConfiguration {
+    @Value("${spring.data.mongodb.host}")
+    private String host;
+    
+    @Value("${spring.data.mongodb.port}")
+    private int port;
+    
+    @Value("${server.dbname}")
+    private String dbname;
+
     @Override
     protected String getDatabaseName() {
-        return "test";
+        return dbname;
     }
 
     @Override
     public MongoClient mongoClient() {
-        // localhostではDockerで接続できないため定義を変更
-        // TODO:定義を管理する
-        ServerAddress addr = new ServerAddress("mongodb", 27017);
+        ServerAddress addr = new ServerAddress(host, port);
         return new MongoClient(addr);
     }
 }

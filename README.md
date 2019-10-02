@@ -56,14 +56,9 @@ $ docker start springboot-app
 $ ./gradlew build -x test
 ```
 
-Dockerイメージは作り直し。
+初回実行時は`--build`オプションを付与して実行。
 ```
-$ docker build -t springboot-docker:0.0.1-SNAPSHOT ./ --build-arg JAR_FILE=./build/libs/spring-boot_with_docker-0.0.1-SNAPSHOT.jar
-```
-
-この状態まできたら次を実行。
-```
-$ docker-compose up
+$ docker-compose up --build
 ```
 
 止める時は次。

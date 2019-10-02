@@ -1,0 +1,10 @@
+server:
+  dbname: test
+
+spring:
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+
+    
