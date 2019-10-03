@@ -1,0 +1,10 @@
+server:
+  dbname: test
+
+spring:
+  data:
+    mongodb:
+      host: mongodb #docker-compose.ymlに定義されたcontainer_nameを参照
+      port: 27017
+
+    
