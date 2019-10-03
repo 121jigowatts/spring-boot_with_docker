@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mongodb:
+  mongo-db:
     container_name: mongodb
     image: mongo:latest
     restart: always
@@ -13,10 +13,10 @@ services:
   springboot-app:
     #image: springboot-docker:0.0.1-SNAPSHOT
     build: 
-      context: . #Dockerfileを指定
-      args:
+      context: . #Dockerfileを指定（カレント）
+      args: #Dockerfileの引数を指定
         - JAR_FILE=./build/libs/spring-boot_with_docker-0.0.1-SNAPSHOT.jar
     ports:
       - 8080:8080
     depends_on:
-      - mongodb
+      - mongo-db
